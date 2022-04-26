@@ -44,6 +44,7 @@ function Grid(props) {
                     visited: false,
                     in_shortest_path: false,
                     dist: MAX, //distance from start point
+                    cost: 0,
                     prev: {}
                 }
             }
@@ -176,7 +177,7 @@ function Grid(props) {
         return new_grid;
     }
 
-    async function run_dijkstra() {
+    async function find_shortest_path(cost_func) {
         setSettingBlocksMode(false);
         setCalculationMode(true);
         let current_sq;
@@ -193,16 +194,18 @@ function Grid(props) {
             for (let j = 0; j < neighbours.length; j++) {
                 if (neighbours[j].visited) {
                     console.log("sq: " + current_sq.row_index + "," + current_sq.col_index + " already visited!");
-
                 }
 
                 else if (neighbours[j].dist > current_sq.dist + 1) { // +1 because all distances between squares are 1   
                     neighbours[j].dist = current_sq.dist + 1;
                     neighbours[j].prev = current_sq;
+                    neighbours[j].cost = cost_func(current_sq);
                 }
                 queue_arr = update_queue(queue_arr, neighbours[j]);
             }
             // sort the queue_arr if needed
+            queue_arr = sort_queue(queue_arr);
+
             console.log("current_sq: " + current_sq.row_index + "," + current_sq.col_index);
             current_sq.visited = true;
             if (current_sq.id !== start_sq.id && current_sq.id !== dest_sq.id)
@@ -220,6 +223,19 @@ function Grid(props) {
         animate_shortest_path()
     }
 
+    function sort_queue(queue) {
+        for (var i = 0; i < queue.length; i++) {
+            for (var j = 0; j < (queue.length - i - 1); j++) {
+                if (queue[j].cost > queue[j + 1].cost) {
+                    var temp = queue[j]
+                    queue[j] = queue[j + 1]
+                    queue[j + 1] = temp
+                }
+            }
+        }
+        return queue;
+    }
+
     async function animate_shortest_path() {
         var current_sq = grid[dest_sq.row_index][dest_sq.col_index];
         while (current_sq.id !== start_sq.id) {
@@ -233,9 +249,20 @@ function Grid(props) {
 
     }
 
+    function run_dijkstra() {
+        find_shortest_path(function (sq) {
+            return 1;
+        })
+    }
+
     function run_A_star() {
-        setSettingBlocksMode(false);
-        setCalculationMode(true);
+        find_shortest_path(function (sq) {
+            let x1 = sq.row_index;
+            let y1 = sq.col_index;
+            let x2 = dest_sq.row_index;
+            let y2 = dest_sq.col_index;
+            return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+        })
 
     }
 
