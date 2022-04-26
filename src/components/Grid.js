@@ -95,7 +95,6 @@ function Grid(props) {
             grid[elem.row_index][elem.col_index].dest_point = true;
             setDestSq(grid[elem.row_index][elem.col_index]);
             document.getElementById(elem.id).style.backgroundColor = "red";
-            // setGrid(temp_grid);
             setSettingDestMode(false);
             setCursor("auto");
             setSettingBlocksMode(true);
@@ -108,8 +107,6 @@ function Grid(props) {
             temp_blocks_squares.push(grid[elem.row_index][elem.col_index])
             setBlockSquares(temp_blocks_squares);
             document.getElementById(elem.id).style.backgroundColor = "black";
-            // setGrid(temp_grid);
-            // update_rendering();
             return;
         }
     }
@@ -212,8 +209,7 @@ function Grid(props) {
                 document.getElementById(current_sq.id).style.backgroundColor = "green";
 
             grid[current_sq.row_index][current_sq.col_index] = current_sq;
-            // temp_grid[current_sq.row_index][current_sq.col_index] = current_sq;
-            // setGrid(get_updated_grid(current_sq));
+
             await sleep(1);
 
 
