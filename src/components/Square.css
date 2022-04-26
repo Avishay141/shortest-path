@@ -1,0 +1,7 @@
+.square{
+    border-style:solid;
+    border-width: thin;
+    height: 15px;
+    width: 15px;
+    border-color: rgba(35, 13, 226, 0.363);
+}

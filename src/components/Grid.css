@@ -1,0 +1,25 @@
+.grid {
+    /* width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* height:100vh;   */
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+}
+
+.header button {
+    margin: 5px;
+
+}
+
+.Squares {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
