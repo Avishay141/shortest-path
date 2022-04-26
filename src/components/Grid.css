@@ -1,18 +1,11 @@
-.grid {
-    /* width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* height:100vh;   */
-    text-align: center;
-}
-
 .header {
     text-align: center;
+    background-color: blueviolet;
+    margin: 10px;
 }
 
 .header button {
-    margin: 5px;
+    margin: 10px;
 
 }
 
@@ -22,4 +15,5 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+
 }

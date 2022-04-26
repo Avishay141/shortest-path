@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import Square from "./Square";
 import Grid from "./Grid";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-
-
-
-
-
-
 
   return (
     <div className="App">

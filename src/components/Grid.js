@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Square from "./Square";
 import "./Grid.css";
-import mySleep from "./Service";
+import Button from 'react-bootstrap/Button';
 
 function Grid(props) {
 
@@ -16,7 +16,6 @@ function Grid(props) {
     const [setting_dest_mode, setSettingDestMode] = useState(false);
     const [setting_blocks_mode, setSettingBlocksMode] = useState(false);
     const [cursor, setCursor] = useState('auto');
-    const [force_render, setForceRender] = useState(false);
     const [calculation_mode, setCalculationMode] = useState(false);
 
     const [start_sq, setStartSq] = useState({});
@@ -59,10 +58,6 @@ function Grid(props) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-
-    function update_rendering() {
-        setForceRender(!force_render);
-    }
 
 
 
@@ -269,11 +264,12 @@ function Grid(props) {
     return (
         <div className="grid" style={{ cursor: cursor }}>
             <div className="header">
-                <h2>Searches</h2>
-                <button onClick={set_start_point}> Set start and dest </button>
+                <h2>Find Shortest Path</h2>
+                <Button className="btn btn-dark" onClick={set_start_point}> Set start and dest </Button>
                 <br />
-                <button onClick={run_dijkstra}> Dijkstra </button>
-                <button onClick={run_A_star}> A*</button>
+                <Button className="btn btn-success" onClick={run_dijkstra}> Dijkstra </Button>
+                <Button className="btn btn-primary" onClick={run_A_star}> A*</Button>
+                <Button className="btn btn-warning" onClick={() => { window.location.reload() }}> Clean grid</Button>
 
             </div>
 
@@ -293,8 +289,6 @@ function Grid(props) {
 
                 </div>
             })}
-
-
 
         </div>
     );
