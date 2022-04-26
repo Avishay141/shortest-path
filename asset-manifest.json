@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/shortest-path/static/css/main.9cfa2cc7.css",
+    "main.js": "/shortest-path/static/js/main.60a5752c.js",
+    "index.html": "/shortest-path/index.html",
+    "main.9cfa2cc7.css.map": "/shortest-path/static/css/main.9cfa2cc7.css.map",
+    "main.60a5752c.js.map": "/shortest-path/static/js/main.60a5752c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9cfa2cc7.css",
+    "static/js/main.60a5752c.js"
+  ]
+}
